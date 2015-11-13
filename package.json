@@ -1,0 +1,25 @@
+{
+  "name": "node-excel-export",
+  "version": "1.0.0",
+  "description": "Node-Excel-Export",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreyan-andreev/node-excel-export.git"
+  },
+  "keywords": [
+    "excel"
+  ],
+  "author": "Andreyan Andreev <andreyan.andreev@live.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andreyan-andreev/node-excel-export/issues"
+  },
+  "homepage": "https://github.com/andreyan-andreev/node-excel-export#readme",
+  "dependencies": {
+    "xlsx-style": "^0.8.6"
+  }
+}
