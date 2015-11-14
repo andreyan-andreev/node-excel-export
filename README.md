@@ -83,8 +83,8 @@ var report = excel.buildExport(
 );
 
 // You can then return this straight
-res.attachment('export.xlsx'); // This is sails.js specific (in general you need to set headers)
-return res.send(excel_export);
+res.attachment('report.xlsx'); // This is sails.js specific (in general you need to set headers)
+return res.send(report);
 
 // OR you can save this buffer to the disk by creating a file.
 
