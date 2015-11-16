@@ -39,23 +39,32 @@ var styles = {
   }
 };
 
+//Array of objects representing heading rows (very top)
+let heading = [
+  [{value: 'a1', style: styles.headerDark}, {value: 'b1', style: styles.headerDark}, {value: 'c1', style: styles.headerDark}],
+  ['a2', 'b2', 'c2'] // <-- It can be only values
+];
+
 //Here you specify the export structure
 var specification = {
   customer_name: { // <- the key should match the actual data key
     displayName: 'Customer', // <- Here you specify the column header
-    headerStyle: styles.headerDark // <- Header style
+    headerStyle: styles.headerDark // <- Header style,
+    width: 120 // <- width in pixels
   },
   status_id: {
     displayName: 'Status',
     headerStyle: styles.headerDark,
     cellFormat: function(value) { // <- Renderer function
       return (value == 1) ? 'Active' : 'Inactive';
-    }
+    },
+    width: '10' // <- width in chars (when the number is passed as string)
   },
   note: {
     displayName: 'Description',
     headerStyle: styles.headerDark,
-    cellStyle: styles.cellPink // <- Cell style [todo: allow function]
+    cellStyle: styles.cellPink, // <- Cell style [todo: allow function]
+    width: 220 // <- width in pixels
   }
 }
 
@@ -75,7 +84,8 @@ var dataset = [
 var report = excel.buildExport(
   [ // <- Notice that this is an array. Pass multiple sheets to create multi sheet report
     {
-      name: 'Sheet name', // <- Specify sheet name
+      name: 'Sheet name', // <- Specify sheet name (optional)
+      heading: heading, // <- Raw heading array (optional)
       specification: specification, // <- Report specification
       data: dataset // <-- Report data
     }

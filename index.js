@@ -11,8 +11,18 @@ module.exports = {
       let specification = sheet.specification;
       let dataset = sheet.data;
       let sheet_name = sheet.name || 'Sheet' + index+1;
+      let data = [];
+      let config = {
+        cols: []
+      };
 
       if( ! specification || ! dataset) throw 'missing specification or dataset.';
+
+      if(sheet.heading) {
+        sheet.heading.forEach(function(row) {
+          data.push(row);
+        });
+      }
 
       //build the header row
       let header = [];
@@ -21,8 +31,17 @@ module.exports = {
           value: specification[col].displayName,
           style: (specification[col].headerStyle) ? specification[col].headerStyle : undefined
         });
+
+        if(specification[col].width) {
+          if(Number.isInteger(specification[col].width)) config.cols.push({wpx: specification[col].width});
+          else if(Number.isInteger(parseInt(specification[col].width))) config.cols.push({wch: specification[col].width});
+          else throw 'Provide column width as a number';
+        } else {
+          config.cols.push({});
+        }
+
       }
-      let data = [header]; //Inject the header at 0
+      data.push(header); //Inject the header at 0
 
       dataset.forEach(record => {
         let row = [];
@@ -39,14 +58,15 @@ module.exports = {
               style: specification[col].cellStyle
             }
           }
-          row.push(cell_value) // Push new cell to the row
+          row.push(cell_value); // Push new cell to the row
         }
         data.push(row); // Push new row to the sheet
       });
 
       sheets.push({
         name: sheet_name,
-        data: data
+        data: data,
+        config: config
       });
 
     });
