@@ -49,7 +49,7 @@ let heading = [
 var specification = {
   customer_name: { // <- the key should match the actual data key
     displayName: 'Customer', // <- Here you specify the column header
-    headerStyle: styles.headerDark // <- Header style,
+    headerStyle: styles.headerDark, // <- Header style
     width: 120 // <- width in pixels
   },
   status_id: {
