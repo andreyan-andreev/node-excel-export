@@ -75,7 +75,7 @@ var specification = {
   note: {
     displayName: 'Description',
     headerStyle: styles.headerDark,
-    cellStyle: styles.cellPink, // <- Cell style [todo: allow function]
+    cellStyle: styles.cellPink, // <- Cell style
     width: 220 // <- width in pixels
   }
 }
