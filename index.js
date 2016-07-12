@@ -29,7 +29,7 @@ module.exports = {
       for (let col in specification) {
         header.push({
           value: specification[col].displayName,
-          style: (specification[col].headerStyle) ? specification[col].headerStyle : undefined
+          style: specification[col].headerStyle || ''
         });
 
         if(specification[col].width) {
