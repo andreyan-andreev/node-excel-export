@@ -46,16 +46,20 @@ module.exports = {
       dataset.forEach(record => {
         let row = [];
         for (let col in specification) {
-          let cell_value = record[col];
+          if(!specification[col].propertyName){
+            throw 'Provide propertyName in specification';
+          }
+
+          let cell_value = record[specification[col].propertyName];
 
           if(specification[col].cellFormat && typeof specification[col].cellFormat == 'function') {
-            cell_value = specification[col].cellFormat(record[col], record);
+            cell_value = specification[col].cellFormat(cell_value, record, col);
           }
 
           if(specification[col].cellStyle && typeof specification[col].cellStyle == 'function') {
             cell_value = {
               value: cell_value,
-              style: specification[col].cellStyle(record[col], record)
+              style: specification[col].cellStyle(cell_value, record, col)
             };
           } else if(specification[col].cellStyle) {
             cell_value = {
