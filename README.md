@@ -91,14 +91,24 @@ var dataset = [
   {customer_name: 'MS', status_id: 0, note: 'some note', misc: 'not shown'}
 ]
 
+// Define an array of merges. 1-1 = A:1
+// The merges are independent of the data.
+// A merge will overwrite all data _not_ in the top-left cell.
+var merges = [
+  { start: { row: 1, column: 1 }, end: { row: 1, column: 10 } },
+  { start: { row: 2, column: 1 }, end: { row: 2, column: 5 } },
+  { start: { row: 2, column: 6 }, end: { row: 2, column: 10 } }
+]
+
 // Create the excel report.
 // This function will return Buffer
 var report = excel.buildExport(
   [ // <- Notice that this is an array. Pass multiple sheets to create multi sheet report
     {
-      name: 'Sheet name', // <- Specify sheet name (optional)
+      name: 'Report', // <- Specify sheet name (optional)
       heading: heading, // <- Raw heading array (optional)
-      specification: specification, // <- Report specification
+      merges: merges,
+      specification: specification.specification(styles), // <- Report specification
       data: dataset // <-- Report data
     }
   ]
@@ -109,5 +119,9 @@ res.attachment('report.xlsx'); // This is sails.js specific (in general you need
 return res.send(report);
 
 // OR you can save this buffer to the disk by creating a file.
-
 ```
+
+#### Contributors
+| Contributor   | Contribution   |
+| --- | --- |
+| Tony Archer | Cell Merging |

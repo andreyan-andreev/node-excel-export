@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/andreyan-andreev/node-excel-export#readme",
   "dependencies": {
-    "xlsx-style": "^0.8.6"
+    "xlsx-style": "^0.8.13"
   }
 }
