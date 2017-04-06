@@ -63,6 +63,11 @@ module.exports = {
               style: specification[col].cellStyle
             };
           }
+          
+          if (specification[col].mergeGroup) {
+                cell_value.merge = specification[col].mergeGroup;
+          }
+          
           row.push(cell_value); // Push new cell to the row
         }
         data.push(row); // Push new row to the sheet
