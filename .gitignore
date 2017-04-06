@@ -1,4 +1,3 @@
 node_modules
-/nbproject/private/
-!/node_modules/
+nbproject
 .idea
