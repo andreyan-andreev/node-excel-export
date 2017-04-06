@@ -1,7 +1,7 @@
 
 'use strict';
 
-const excel = require('./lib/excel');
+const excel = require('./../../../../Downloads/node-excel-export-master/lib/excel');
 module.exports = {
   buildExport: function(params) {
     if( ! (params instanceof Array)) throw 'buildExport expects an array';
@@ -29,7 +29,7 @@ module.exports = {
       for (let col in specification) {
         header.push({
           value: specification[col].displayName,
-          style: (specification[col].headerStyle) ? specification[col].headerStyle : undefined
+          style: specification[col].headerStyle || ''
         });
 
         if(specification[col].width) {
@@ -63,11 +63,6 @@ module.exports = {
               style: specification[col].cellStyle
             };
           }
-          
-          if (specification[col].mergeGroup) {
-                cell_value.merge = specification[col].mergeGroup;
-          }
-          
           row.push(cell_value); // Push new cell to the row
         }
         data.push(row); // Push new row to the sheet
