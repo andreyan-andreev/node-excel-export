@@ -10,11 +10,11 @@ npm install node-excel-export
 ### Usage
 
 ```javascript
-var excel = require('node-excel-export');
+const excel = require('node-excel-export');
 
 // You can define styles as json object
 // More info: https://github.com/protobi/js-xlsx#cell-styles
-var styles = {
+const styles = {
   headerDark: {
     fill: {
       fgColor: {
@@ -47,13 +47,13 @@ var styles = {
 };
 
 //Array of objects representing heading rows (very top)
-let heading = [
+const heading = [
   [{value: 'a1', style: styles.headerDark}, {value: 'b1', style: styles.headerDark}, {value: 'c1', style: styles.headerDark}],
   ['a2', 'b2', 'c2'] // <-- It can be only values
 ];
 
 //Here you specify the export structure
-var specification = {
+const specification = {
   customer_name: { // <- the key should match the actual data key
     displayName: 'Customer', // <- Here you specify the column header
     headerStyle: styles.headerDark, // <- Header style
@@ -85,7 +85,7 @@ var specification = {
 // dataset contains more fields as the report is build based on the
 // specification provided above. But you should have all the fields
 // that are listed in the report specification
-var dataset = [
+const dataset = [
   {customer_name: 'IBM', status_id: 1, note: 'some note', misc: 'not shown'},
   {customer_name: 'HP', status_id: 0, note: 'some note'},
   {customer_name: 'MS', status_id: 0, note: 'some note', misc: 'not shown'}
@@ -94,7 +94,7 @@ var dataset = [
 // Define an array of merges. 1-1 = A:1
 // The merges are independent of the data.
 // A merge will overwrite all data _not_ in the top-left cell.
-var merges = [
+const merges = [
   { start: { row: 1, column: 1 }, end: { row: 1, column: 10 } },
   { start: { row: 2, column: 1 }, end: { row: 2, column: 5 } },
   { start: { row: 2, column: 6 }, end: { row: 2, column: 10 } }
@@ -102,13 +102,13 @@ var merges = [
 
 // Create the excel report.
 // This function will return Buffer
-var report = excel.buildExport(
+const report = excel.buildExport(
   [ // <- Notice that this is an array. Pass multiple sheets to create multi sheet report
     {
       name: 'Report', // <- Specify sheet name (optional)
       heading: heading, // <- Raw heading array (optional)
-      merges: merges,
-      specification: specification.specification(styles), // <- Report specification
+      merges: merges, // <- Merge cell ranges
+      specification: specification, // <- Report specification
       data: dataset // <-- Report data
     }
   ]
@@ -124,4 +124,7 @@ return res.send(report);
 #### Contributors
 | Contributor   | Contribution   |
 | --- | --- |
-| Tony Archer | Cell Merging |
+| @jbogatay | Allow null values |
+| @frenchbread | Example update |
+| @fhemberger | Undefined header style |
+| @zeg-io Tony Archer | Cell Merging |
