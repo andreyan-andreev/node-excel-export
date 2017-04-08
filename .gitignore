@@ -1,4 +1,5 @@
 node_modules
+npm_debug.log
 nbproject
 .idea
 .vscode
