@@ -1,6 +1,6 @@
 {
   "name": "node-excel-export",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Node-Excel-Export",
   "main": "index.js",
   "scripts": {
