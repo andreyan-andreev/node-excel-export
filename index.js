@@ -1,4 +1,5 @@
 "use strict";
+
 const excel = require('./lib/excel')
 
 let buildExport = params => {
@@ -66,13 +67,6 @@ let buildExport = params => {
             style: specification[col].cellStyle
           }
         }
-
-
-        // TODO: REMOVE
-        // if (specification[col].mergeGroup) {
-        //   cell_value.merge = specification[col].mergeGroup
-        // }
-
         row.push(cell_value) // Push new cell to the row
       }
       data.push(row) // Push new row to the sheet
