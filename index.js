@@ -1,3 +1,4 @@
+"use strict";
 const excel = require('./lib/excel')
 
 let buildExport = params => {
