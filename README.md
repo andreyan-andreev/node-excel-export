@@ -120,7 +120,8 @@ return res.send(report);
 
 // OR you can save this buffer to the disk by creating a file.
 ```
-
+### Cells Style
+* Check [here](https://github.com/protobi/js-xlsx#cell-styles), for more styling
 #### Contributors
 | Contributor   | Contribution   |
 | --- | --- |
