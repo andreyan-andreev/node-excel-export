@@ -9,7 +9,7 @@ let buildExport = params => {
   params.forEach(function (sheet, index) {
     let specification = sheet.specification
     let dataset = sheet.data
-    let sheet_name = sheet.name || 'Sheet' + index + 1
+    let sheet_name = sheet.name || 'Sheet' + (index + 1)
     let data = []
     let merges = sheet.merges
     let config = {
