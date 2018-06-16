@@ -9,11 +9,11 @@ npm install node-excel-export
 
 ### Usage
 
+* Check [here](https://github.com/protobi/js-xlsx#cell-styles), for more styling
 ```javascript
 const excel = require('node-excel-export');
 
 // You can define styles as json object
-// More info: https://github.com/protobi/js-xlsx#cell-styles
 const styles = {
   headerDark: {
     fill: {
@@ -120,8 +120,7 @@ return res.send(report);
 
 // OR you can save this buffer to the disk by creating a file.
 ```
-### Cells Style
-* Check [here](https://github.com/protobi/js-xlsx#cell-styles), for more styling
+
 #### Contributors
 | Contributor   | Contribution   |
 | --- | --- |
@@ -129,3 +128,4 @@ return res.send(report);
 | @frenchbread | Example update |
 | @fhemberger | Undefined header style |
 | @zeg-io Tony Archer | Cell Merging |
+| @martin-podlubny | Number and Dates custom formatting |
