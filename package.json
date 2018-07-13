@@ -2,14 +2,19 @@
   "name": "node-excel-export",
   "version": "1.4.4",
   "description": "Node-Excel-Export",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --progress",
+    "watch": "webpack --watch --progress"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andreyan-andreev/node-excel-export.git"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "excel"
   ],
@@ -21,5 +26,12 @@
   "homepage": "https://github.com/andreyan-andreev/node-excel-export#readme",
   "dependencies": {
     "xlsx-style": "^0.8.13"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "webpack": "^3.10.0",
+    "xlsx": "^0.12.0"
   }
 }
