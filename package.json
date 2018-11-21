@@ -22,5 +22,8 @@
   "homepage": "https://github.com/andreyan-andreev/node-excel-export#readme",
   "dependencies": {
     "xlsx-style": "^0.8.13"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.9"
   }
 }
