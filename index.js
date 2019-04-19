@@ -2,7 +2,7 @@
 
 const excel = require('./lib/excel')
 
-let buildExport = params => {
+let buildExport = (params, options) => {
   if (!(params instanceof Array)) throw 'buildExport expects an array'
 
   let sheets = []
@@ -81,7 +81,7 @@ let buildExport = params => {
 
   })
 
-  return excel.build(sheets)
+  return excel.build(sheets, options)
 
 }
 
