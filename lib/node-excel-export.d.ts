@@ -20,10 +20,10 @@ declare module 'node-excel-export' {
     },
   };
 
-  type Heading = [{
-    value: string;
+  type Heading<TRowData> = [{
+    value: keyof TRowData;
     style: CellStyle
-  }| string[]][]
+  }| keyof TRowData[]][]
 
   type Merges = {
     start: {
@@ -47,9 +47,9 @@ declare module 'node-excel-export' {
   }
 
   function buildExport<TRowData>(sheets: {
-    name?: string;
-    heading?: Heading;
-    merges?: Merges;
+    name: string;
+    heading: Heading<TRowData> | undefined;
+    merges: Merges | undefined;
     specification: Specification<TRowData>;
     data: TRowData[];
   }[]): Buffer;
