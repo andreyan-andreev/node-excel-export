@@ -50,7 +50,7 @@ let buildExport = (params, options) => {
     dataset.forEach(record => {
       let row = []
       for (let col in specification) {
-        let cell_value = record[col]
+        let cell_value = getValue(col.split('.'), record);
 
         if (specification[col].cellFormat && typeof specification[col].cellFormat == 'function') {
           cell_value = specification[col].cellFormat(record[col], record)
@@ -83,6 +83,23 @@ let buildExport = (params, options) => {
 
   return excel.build(sheets, options)
 
+}
+
+/**
+ * Gets nested values in nested objects.
+ * @param  {String} path Path of value.
+ * @param  {Object} obj  Object to get the value from.
+ * @return Value for specified path.
+ */
+function getValue(path, obj){
+  if(path.length === 1){
+
+    return obj[path[0]];
+  }
+  else{
+
+    return getValue(path, obj[path.shift()]);
+  }
 }
 
 module.exports = {
