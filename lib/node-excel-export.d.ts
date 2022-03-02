@@ -43,6 +43,7 @@ declare module 'node-excel-export' {
       cellStyle?: ((value: TRowData[CellName], row: TRowData) => CellStyle) | CellStyle;
       cellFormat?: (value: TRowData[CellName], row: TRowData) => string;
       width: string | number;
+      hidden?: boolean;
     }
   }
 

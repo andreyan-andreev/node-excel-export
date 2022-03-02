@@ -31,18 +31,24 @@ let buildExport = (params, options) => {
         value: specification[col].displayName,
         style: specification[col].headerStyle || ''
       })
+      let columnSpec = {}
+
+      if (typeof specification[col].hidden !== 'undefined') {
+        delete specification[col].width
+        columnSpec.hidden = specification[col].hidden
+      }
 
       if (specification[col].width) {
         if (Number.isInteger(specification[col].width)) {
-          config.cols.push({ wpx: specification[col].width })
+          columnSpec.wpx = specification[col].width
         } else if (Number.isInteger(parseInt(specification[col].width))) {
-          config.cols.push({ wch: specification[col].width })
+          columnSpec.wch = specification[col].width
         } else {
           throw 'Provide column width as a number'
         }
-      } else {
-        config.cols.push({})
-      }
+      } 
+
+      config.cols.push(columnSpec)
 
     }
     data.push(header) //Inject the header at 0
